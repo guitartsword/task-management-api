@@ -22,6 +22,10 @@ def read_tasks(session: SessionDep, skip: int = 0, limit: int = 10):
     tasks = session.exec(statement).all()
     return TaskListResponse(data=tasks, count=count)
 
+@router.get("/{id}", response_model=Task)
+def get_task_detail(session: SessionDep, id: int):
+    return session.get(Task, id)
+
 
 @router.post("/", response_model=Task)
 def create_task(session: SessionDep, item_in: TaskCreate):
