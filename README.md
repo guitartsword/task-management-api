@@ -62,5 +62,5 @@ DATABASE_URL=postgresql+psycopg://<user>:<password>@<host>/<db>
 
 Run migrations by executing the following command inside the container:
 ```python
-python -m core.db
+python migrate.py
 ```
