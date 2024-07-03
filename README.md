@@ -11,9 +11,22 @@
 docker compose up
 # in another terminal
 make migrate
+
+# in case you want some data you can use
+make seed_db
 # fast api server should be running correctly for the developer:
 # http://localhost:8000/docs
 # http://localhost:8000/redoc
+```
+
+If you ran `make seed_db`, these are the user credentials to test data:
+```sh
+# User 1
+email=user1@test.com
+password=test1234
+# User 2
+email=user2@test.com
+password=test1234
 ```
 
 ## Next Steps
