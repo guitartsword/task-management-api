@@ -11,6 +11,7 @@ services:
       - db
     environment:
       - DATABASE_URL=postgresql+psycopg://postgres:supersecretpassword@db/trially
+      - SECRET_KEY=goQmOtw6feiepsLSUBItjSqGcqmUNoQn34j0599j6to
     command: fastapi dev main.py --host 0.0.0.0
   db:
     image: postgres:16

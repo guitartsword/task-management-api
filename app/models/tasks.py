@@ -2,7 +2,9 @@ from datetime import datetime, timedelta
 import enum
 from typing import Optional
 
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, Relationship, SQLModel
+
+from models.users import User
 
 class StatusOptions(enum.Enum):
     todo = 'todo'
@@ -15,6 +17,8 @@ class Task(SQLModel, table=True):
     description: str = Field()
     status: StatusOptions = Field(default=StatusOptions.todo)
     due_date: datetime = Field(default=datetime.now()+timedelta(days=1))
+    owner_id: int | None = Field(default=None, foreign_key="user.id", nullable=False)
+    owner: User = Relationship(back_populates="tasks")
 
 class TaskListResponse(SQLModel):
     data: list[Task]
